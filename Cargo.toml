@@ -1,9 +1,9 @@
 [package]
 name = "flower-pot"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 license = "CC0-1.0"
-description = "A tiny library providing constants and simple functions for ANSI control codes"
+description = "Provides constants and simple functions for text-styling ANSI control codes"
 repository = "https://github.com/acotis/flower-pot"
 readme = "README.md"
 keywords = ["ansi", "colors", "terminal"]
