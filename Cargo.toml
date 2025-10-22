@@ -1,6 +1,6 @@
 [package]
 name = "flower-pot"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "CC0-1.0"
 description = "A tiny library providing constants and simple functions for ANSI control codes"
