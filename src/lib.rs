@@ -1,19 +1,52 @@
 
 #![warn(missing_docs)]
 
-//! Constants and simple functions for invoking ANSI control codes used for text-styling (including color codes). Does not deal with cursor movement or other control codes.
+//! Constants and simple functions for invoking ANSI control codes used for text-styling in terminals (including color codes). Does not support cursor movement or any other control codes.
 //!
-//! Provides constant bindings for text-styling control codes like `BOLD` (`\x1b[1m`) and `fg::GREEN` (`\x1b[32m`), and functions to succinctly create strings that invoke the 8-bit color pallette and truecolor functionality.
+//! Provides constant bindings for text-styling control codes like `BOLD` (= `"\x1b[1m"`) and `GREEN` (= `"\x1b[32m"`):
 //!
 //! ```
 //! use flower_pot::*;
 //!
-//! println!("{GREEN}ok{RESET}"); // prints a green "ok"
-//! println!("{BOLD}{RED}error!{RESET}"); // prints a bold, red "error!"
-//! //println!("{}"); // prints a bold, red "error!"
+//! println!("{GREEN}ok{RESET}");           // prints a green "ok"
+//! println!("{BOLD}{RED}error!{RESET}");   // prints a bold, red "error!"
+//! println!("{BLUE_BG}cloud{RESET}");      // prints white text on a blue background
+//!
+//! // Note that you must print the RESET code after the end of
+//! // the text you want styled, or else all text printed to the
+//! // terminal after that point will also be styled that way,
+//! // including text outputted by other programs.
+//!
 //! ```
 //!
-//! Note that not all terminals support all of the codes defined in this library. The basic workflow of ANSI control codes is that a program outputs sequences of special characters defining what it wants (such as "make the following text bold" or "make the following text green" or "make the following text be the RGB color [127, 45, 18]") to stdout, and then the terminal the program is running in decides what to do with those characters. The codes themselves are reasonably well-standardized, but not every terminal understands all of them. Some terminals might ignore some codes, or might do weird things when you use them (such as displaying the text after the code incorrectly). This is a feature of the ANSI control code ecosystem, and not something a library can fix.
+//! ...functions to succinctly invoke the 8-bit color palette:
+//!
+//! ```
+//! use flower_pot::*;
+//!
+//! // prints text in "palette-color #237" (often a shade of grey)
+//! // with a background color of "palette-color #214" (often a
+//! // shade of orange)
+//!
+//! println!("{}{}example text{RESET}", color_256(237), color_256_bg(214));
+//!
+//! ```
+//!
+//! ...and ones that invoke truecolor functionality:
+//!
+//! ```
+//! use flower_pot::*;
+//!
+//! // prints text in RGB color [127, 45, 68] with a background
+//! // color of RGB color [0, 255, 255]
+//!
+//! println!("{}{}truecolor text{RESET}", truecolor(127, 45, 68), truecolor_bg(0, 255, 255));
+//!
+//! ```
+//!
+//! The `color_256`, `color_256_bg`, `truecolor`, and `truecolor_bg` functions all return Strings.
+//!
+//! Note that not all terminals support all of the codes defined in this library. The basic workflow of ANSI control codes is that a program outputs sequences of special characters defining what it wants (such as "make the following text bold" or "make the following text green" or "make the following text be the RGB color [127, 45, 68]") to stdout, and then the terminal that the program is running in decides what to do with those characters. The codes themselves are reasonably well-standardized, but not every terminal understands all of them. Some terminals might ignore some codes, or might do weird things when you use them (such as displaying the text following the code incorrectly). This is a feature of the ANSI control code ecosystem, and not something a library can fix.
 //!
 //! Once you've outputted a control code the terminal understands, all text that follows it is styled in the manner requested. If you want to go back to unstyled text, output the `RESET` code (`\x1b[0m`) or one of the more specific style-resetting codes such as `NOT_UNDERLINED` (`\x1b[24m`).
 //!
@@ -218,6 +251,15 @@ mod tests {
         println!("hidden: {HIDDEN}hidden{NOT_HIDDEN} revealed");
         println!("{}green fg {}reset fg", truecolor(0, 255, 0),    DEFAULT);
         println!("{}green bg {}reset bg", truecolor_bg(0, 255, 0), DEFAULT_BG);
+        println!();
+
+        println!("{GREEN}ok{RESET}");           // prints a green "ok"
+        println!("{BOLD}{RED}error!{RESET}");   // prints a bold, red "error!"
+        println!("{BLUE_BG}cloud{RESET}");      // prints
+        println!();
+
+        println!("{}{}example text{RESET}", color_256(237), color_256_bg(214));
+        println!("{}{}truecolor text{RESET}", truecolor(127, 45, 68), truecolor_bg(0, 255, 255));
         println!();
     }
 }
