@@ -75,7 +75,7 @@ pub const HIDDEN:                   &'static str = "\x1b[8m";
 /// Make the following text strikethrough. Not supported in Terminal.app according to Wikipedia.
 pub const STRIKETHROUGH:            &'static str = "\x1b[9m";
 /// Switch to the default font.
-pub const PRIMARY_FONT:             &'static str = "\x1b[10m";
+pub const DEFAULT_FONT:             &'static str = "\x1b[10m";
 /// Switch to alternative font #1.
 pub const ALT_FONT_1:               &'static str = "\x1b[11m";
 /// Switch to alternative font #2.
@@ -95,7 +95,7 @@ pub const ALT_FONT_8:               &'static str = "\x1b[18m";
 /// Switch to alternative font #9.
 pub const ALT_FONT_9:               &'static str = "\x1b[19m";
 /// Switch to Fraktur font. Rarely supported according to Wikipedia.
-pub const FRAKTUR_FONT:             &'static str = "\x1b[20m";
+pub const FRAKTUR:                  &'static str = "\x1b[20m";
 /// Double-underline the following text. WARNING: this constant contains the exact same control
 /// code as the constant `NOT_BOLD`, because different terminals interpret the code to mean
 /// different things. If you use either constant, be aware that your text may be rendered
@@ -251,10 +251,10 @@ mod tests {
         println!("{BLUE}blue {BRIGHT_BLUE}bright blue{RESET}");
         println!("normal {ITALIC}italic {BOLD}and bold {UNDERLINE}and underline{RESET}");
         println!("normal {DOUBLE_UNDERLINE}double underline{RESET}");
-        println!("normal normal");
-        println!("normal {OVERLINE}overline{RESET}");
         println!("normal {ENCIRCLED}encircled{RESET}");
         println!("normal {FRAMED}framed{RESET}");
+        println!("normal {OVERLINE}overline{RESET}");
+
         println!(
             "{}g{}r{}e{}y{}s{}c{}a{}l{}e{} {}c{}o{}l{}o{}r{}s{}",
             color_256(232),
@@ -275,6 +275,7 @@ mod tests {
             color_256_bg(235),
             RESET,
         );
+
         println!(
             "{}r{}a{}i{}n{}b{}o{}w{}i{}c{} {}c{}o{}l{}o{}r{}s{}",
             color_256(132),
@@ -317,6 +318,7 @@ mod tests {
             truecolor_bg(0, 0, 255),
             RESET,
         );
+
         println!("hidden: {HIDDEN}hidden{NOT_HIDDEN} revealed");
         println!("{}green fg {}reset fg", truecolor(0, 255, 0),    DEFAULT);
         println!("{}green bg {}reset bg", truecolor_bg(0, 255, 0), DEFAULT_BG);
@@ -330,9 +332,16 @@ mod tests {
         println!("{}{}example text{RESET}", color_256(237), color_256_bg(214));
         println!("{}{}truecolor text{RESET}", truecolor(127, 45, 68), truecolor_bg(0, 255, 255));
         println!();
+
+        println!("{SLOW_BLINK}slow blink{RESET}");
+        println!("{RAPID_BLINK}rapid blink{RESET}");
+        println!("{ALT_FONT_1}alt font 1{RESET}");
+        println!("{ALT_FONT_2}alt font 2{RESET}");
+        println!("{ALT_FONT_3}alt font 3{RESET}");
+        println!("{FRAKTUR}Fraktur font{RESET}");
+        println!("{DEFAULT_FONT}default font{RESET}");
+        println!("{INVERTED}{GREEN}green fg but it's bg{RESET}");
+        println!();
     }
 }
 
-
-// to try: slow blink, fast blink, alt fonts 1-9, default font, swap fg and bg and then set one of
-// them
