@@ -198,7 +198,8 @@ pub const ENCIRCLED:                &'static str = "\x1b[52m";
 /// Add an overline to the following text.
 pub const OVERLINE:                 &'static str = "\x1b[53m";
 /// Make the following text neither framed nor encircled.
-pub const NOT_FRAMED_NOT_ENCIRCLED: &'static str = "\x1b[54m";
+pub const NEITHER_FRAMED_NOR_ENCIRCLED:
+                                    &'static str = "\x1b[54m";
 /// Make the following text not overlined.
 pub const NOT_OVERLINED:            &'static str = "\x1b[55m";
 
