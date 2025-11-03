@@ -51,6 +51,8 @@
 //! Once you've outputted a control code, all text that follows it will be styled in the manner requested. If you want to go back to unstyled text, output the `RESET` code or one of the more specific style-resetting codes such as `NOT_UNDERLINED`.
 //!
 //! The list of control codes is taken from [the Wikipedia page on ANSI control codes](https://en.wikipedia.org/wiki/ANSI_escape_code). Codes which are not widely supported (as reported by Wikipedia) are marked as such below.
+//!
+//! The named colors covered by ANSI control codes are `BLACK`, `RED`, `GREEN`, `YELLOW`, `BLUE`, `MAGENTA`, `CYAN`, and `WHITE`, and these are available as foreground and background colors, along with "bright" versions which are also available as foreground and background colors. If you want shades of gray, you can try 8-bit colors in the range of 232 (darkest grey) to 255 (lightest grey) or use truecolor. Among the text-styling codes, I find `BOLD`, `DIM`, `ITALIC`, `UNDERLINE`, and `RESET` to be the most commonly useful.
 
 // Styles: 0-29.
 
