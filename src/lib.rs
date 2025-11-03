@@ -134,8 +134,8 @@ pub const GREEN:                    &'static str = "\x1b[32m";
 pub const YELLOW:                   &'static str = "\x1b[33m";
 /// Set foreground color to blue for the following text.
 pub const BLUE:                     &'static str = "\x1b[34m";
-/// Set foreground color to purple for the following text.
-pub const PURPLE:                   &'static str = "\x1b[35m";
+/// Set foreground color to magenta for the following text.
+pub const MAGENTA:                  &'static str = "\x1b[35m";
 /// Set foreground color to cyan for the following text.
 pub const CYAN:                     &'static str = "\x1b[36m";
 /// Set foreground color to white for the following text.
@@ -166,8 +166,8 @@ pub const GREEN_BG:                 &'static str = "\x1b[42m";
 pub const YELLOW_BG:                &'static str = "\x1b[43m";
 /// Set background color to blue for the following text.
 pub const BLUE_BG:                  &'static str = "\x1b[44m";
-/// Set background color to purple for the following text.
-pub const PURPLE_BG:                &'static str = "\x1b[45m";
+/// Set background color to magenta for the following text.
+pub const MAGENTA_BG:               &'static str = "\x1b[45m";
 /// Set background color to cyan for the following text.
 pub const CYAN_BG:                  &'static str = "\x1b[46m";
 /// Set background color to white for the following text.
@@ -213,8 +213,8 @@ pub const BRIGHT_GREEN:             &'static str = "\x1b[92m";
 pub const BRIGHT_YELLOW:            &'static str = "\x1b[93m";
 /// Set the foreground color to bright blue for the following text.
 pub const BRIGHT_BLUE:              &'static str = "\x1b[94m";
-/// Set the foreground color to bright purple for the following text.
-pub const BRIGHT_PURPLE:            &'static str = "\x1b[95m";
+/// Set the foreground color to bright magenta for the following text.
+pub const BRIGHT_MAGENTA:           &'static str = "\x1b[95m";
 /// Set the foreground color to bright cyan for the following text.
 pub const BRIGHT_CYAN:              &'static str = "\x1b[96m";
 /// Set the foreground color to bright white for the following text.
@@ -230,8 +230,8 @@ pub const BRIGHT_GREEN_BG:          &'static str = "\x1b[102m";
 pub const BRIGHT_YELLOW_BG:         &'static str = "\x1b[103m";
 /// Set the background color to bright blue for the following text.
 pub const BRIGHT_BLUE_BG:           &'static str = "\x1b[104m";
-/// Set the background color to bright purple for the following text.
-pub const BRIGHT_PURPLE_BG:         &'static str = "\x1b[105m";
+/// Set the background color to bright magenta for the following text.
+pub const BRIGHT_MAGENTA_BG:        &'static str = "\x1b[105m";
 /// Set the background color to bright cyan for the following text.
 pub const BRIGHT_CYAN_BG:           &'static str = "\x1b[106m";
 /// Set the background color to bright white for the following text.
