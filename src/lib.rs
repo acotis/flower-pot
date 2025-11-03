@@ -48,7 +48,7 @@
 //!
 //! Note that not all terminals support all of the codes defined in this library. The basic workflow of ANSI control codes is that a program outputs sequences of special characters describing what it wants (such as "make the following text bold" or "make the following text green") to stdout, and then the terminal that the program is running in decides what to do with those characters. The codes themselves are reasonably well-standardized, but not every terminal understands all of them. Some terminals might ignore some codes, or might do weird things when you use them (such as displaying the text following the code incorrectly). This is a feature of the ANSI control code ecosystem, and not something a library can fix.
 //!
-//! Once you've outputted a control code, all text that follows it is styled in the manner requested. If you want to go back to unstyled text, output the `RESET` code or one of the more specific style-resetting codes such as `NOT_UNDERLINED`.
+//! Once you've outputted a control code, all text that follows it will be styled in the manner requested. If you want to go back to unstyled text, output the `RESET` code or one of the more specific style-resetting codes such as `NOT_UNDERLINED`.
 //!
 //! The list of control codes is taken from [the Wikipedia page on ANSI control codes](https://en.wikipedia.org/wiki/ANSI_escape_code). Codes which are not widely supported (as reported by Wikipedia) are marked as such below.
 
@@ -96,12 +96,12 @@ pub const ALT_FONT_8:               &'static str = "\x1b[18m";
 pub const ALT_FONT_9:               &'static str = "\x1b[19m";
 /// Switch to Fraktur font. Rarely supported according to Wikipedia.
 pub const FRAKTUR:                  &'static str = "\x1b[20m";
-/// Double-underline the following text. WARNING: this constant contains the exact same control
+/// Double-underline the following text. **WARNING:** this constant contains the exact same control
 /// code as the constant `NOT_BOLD`, because different terminals interpret the code to mean
 /// different things. If you use either constant, be aware that your text may be rendered
 /// differently by different terminals.
 pub const DOUBLE_UNDERLINE:         &'static str = "\x1b[21m";
-/// Make the following text not bold. WARNING: this constant contains the exact same control
+/// Make the following text not bold. **WARNING:** this constant contains the exact same control
 /// code as the constant `DOUBLE_UNDERLINE`, because different terminals interpret the code to mean
 /// different things. If you use either constant, be aware that your text may be rendered
 /// differently by different terminals.
