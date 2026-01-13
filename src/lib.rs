@@ -11,13 +11,9 @@
 //! println!("{GREEN}ok{RESET}");           // prints a green "ok"
 //! println!("{BOLD}{RED}error!{RESET}");   // prints a bold, red "error!"
 //! println!("{BLUE_BG}cloud{RESET}");      // prints white text on a blue background
-//!
-//! // Note that you must print the RESET code after the end of
-//! // the text you want styled, or else all text printed to the
-//! // terminal after that point will also be styled that way,
-//! // including text outputted by other programs.
-//!
 //! ```
+//!
+//! Note that you must print the `RESET` code after the end of the text you want styled, or else all text printed to the terminal after that point will also be styled that way, including text outputted by other programs.
 //!
 //! It also provides functions to invoke the 8-bit color palette:
 //!
